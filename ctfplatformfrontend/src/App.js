@@ -7,6 +7,7 @@ import License from '../src/Components/Pages/License';
 import About from '../src/Components/Pages/About';
 import Team from '../src/Components/Pages/TeamPage';
 import Admin from '../src/Components/Pages/AdminLogin';
+import CreateTeam from '../src/Components/Pages/CreateTeamPage';
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
   <Route exact path="/about" component = {About}/>
   <Route exact path="/team" component = {Team}/>
   <Route exact path="/admin" component = {Admin}/>
-
+  <Route exact path="/createTeam" component = {CreateTeam}/>
 </Switch>
+<Footer/>
  
    </>
   );

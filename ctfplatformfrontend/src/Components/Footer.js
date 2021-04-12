@@ -2,10 +2,14 @@
 
 
 const Footer = ()=>{
+
+  let year = new Date().getFullYear();
+
     return (
           
         <footer className="container-fluid bg-dark my-0 py-3 text-light sticky-bottom">
-        <p class="mb-0 text-center">&copy; 2020-2021 CodeWithHarry.com</p>
+        <h4 className="text-center">All Rights Reserved</h4>
+        <p class="mb-0 text-center">&copy; {year}-{year+1} ABC CTFPlatform</p>
       </footer>
     
     )
