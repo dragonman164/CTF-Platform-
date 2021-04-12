@@ -34,7 +34,7 @@ const NavBar = () =>{
           </Nav>
           <Nav>
       <Nav.Link ><Link to="/team"><Button variant="success" size="lg" style={fontStyle2}>Create or Join Team </Button></Link></Nav.Link>
-      <Nav.Link ><Link to="/admin"><Button variant="danger" size="lg" style={fontStyle2}>Admin Login</Button></Link></Nav.Link>
+      <Nav.Link ><Link to="/scoreboard"><Button variant="danger" size="lg" style={fontStyle2}>Scoreboard</Button></Link></Nav.Link>
     </Nav>
         </Navbar.Collapse>
       </Navbar>

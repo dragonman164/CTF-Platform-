@@ -1,5 +1,5 @@
 import {Button,Form} from 'react-bootstrap';
-
+import {Link} from 'react-router-dom';
 
 const CreateTeam = ()=>{
 
@@ -18,9 +18,14 @@ const CreateTeam = ()=>{
     <Form.Label>Password</Form.Label>
     <Form.Control type="password" placeholder="Password" />
   </Form.Group>
-  <Button variant="warning btn-lg" type="submit">
+
+  <Form.Group controlId="formBasicPassword">
+    <Form.Label>Retype Password</Form.Label>
+    <Form.Control type="password" placeholder="Password" />
+  </Form.Group>
+  <Link to ="/createTeamSuccess"><Button variant="warning btn-lg" type="submit">
     Create Team
-  </Button>
+  </Button></Link>
 </Form>
         </div>
         </>

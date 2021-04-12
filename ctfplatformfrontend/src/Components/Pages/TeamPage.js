@@ -20,9 +20,9 @@ const TeamPage = ()=>{
     <Form.Control type="password" placeholder="Password" />
   </Form.Group>
 
-  <Button variant="success btn-lg mx-2" type="submit" >
+ <Link to="/challenges"><Button variant="success btn-lg mx-2" type="submit" >
     Login 
-  </Button>
+  </Button></Link> 
  <Link to="/createTeam"><Button variant="danger btn-lg " type="submit" >
     Create a new Team
   </Button></Link>

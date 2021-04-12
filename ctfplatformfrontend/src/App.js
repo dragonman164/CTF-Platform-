@@ -6,8 +6,10 @@ import HomePage from '../src/Components/Pages/Home';
 import License from '../src/Components/Pages/License';
 import About from '../src/Components/Pages/About';
 import Team from '../src/Components/Pages/TeamPage';
-import Admin from '../src/Components/Pages/AdminLogin';
+import ScoreBoard from './Components/Pages/ScoreBoard';
 import CreateTeam from '../src/Components/Pages/CreateTeamPage';
+import CreateTeamSuccess from '../src/Components/Pages/CreateTeamSuccess';
+import Challenges from '../src/Components/Pages/Challenges';
 
 function App() {
   return (
@@ -18,8 +20,10 @@ function App() {
   <Route exact path="/license" component = {License}/>
   <Route exact path="/about" component = {About}/>
   <Route exact path="/team" component = {Team}/>
-  <Route exact path="/admin" component = {Admin}/>
+  <Route exact path="/scoreboard" component = {ScoreBoard}/>
   <Route exact path="/createTeam" component = {CreateTeam}/>
+  <Route exact path="/createTeamSuccess" component = {CreateTeamSuccess}/>
+  <Route exact path="/challenges" component={Challenges}/>
 </Switch>
 <Footer/>
  
