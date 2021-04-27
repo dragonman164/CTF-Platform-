@@ -13,6 +13,7 @@ def index(request):
 class TeamDetails(APIView):
     def get(self,request):
         obj = Team.objects.all()
+        obj = sorted(obj,key=lambda x:x.total_score,reverse=True)
         serializer = TeamSerializer(obj,many=True)
         return Response(serializer.data)
 
