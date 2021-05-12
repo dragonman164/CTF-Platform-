@@ -1,15 +1,53 @@
-import {Form,Button} from 'react-bootstrap';
+import {Form,Button,Alert} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import {useEffect,useState} from 'react';
+import axios from 'axios';
+import {useHistory} from 'react-router-dom';
+
+let loginid ="",loginPass = ""
 
 const TeamPage = ()=>{
 
+  const history = useHistory()
+
+  const [teamData,setTeamData] = useState(null);
+  const [alert,showAlert] = useState(false);
+  
+
+  useEffect(()=>{
+    async function request()
+    {
+        try{
+            const Response = await axios.get('http://127.0.0.1:8000/teamapi/',{
+              headers:{
+                Authorization:  'Basic YWRtaW46YWRtaW4=' // if you use token
+            }
+            })
+  
+            setTeamData(Response.data);
+          
+
+        }catch(e)
+        {
+            console.log(e);
+        }
+    }
+    request()
+  
+  },[])
+
+
+
     return (
         <>
+        {alert?<Alert variant="danger">
+    There was some error!! Pls Try Again
+  </Alert>:null}
         <div className="container text-light bg-dark my-4 py-3">
         <Form>
   <Form.Group controlId="formBasicEmail">
-    <Form.Label className="h4">Email address</Form.Label>
-    <Form.Control type="email" placeholder="Enter email" />
+    <Form.Label className="h4">LoginId</Form.Label>
+    <Form.Control type="text" placeholder="Enter your Login Id" onChange ={(e)=>{loginid = e.target.value}} />
     <Form.Text className="text-muted">
       We'll never share your email with anyone else.
     </Form.Text>
@@ -17,12 +55,24 @@ const TeamPage = ()=>{
 
   <Form.Group controlId="formBasicPassword">
     <Form.Label className="h4">Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
+    <Form.Control type="password" placeholder="Password" onChange ={(e)=>{loginPass = e.target.value}} />
   </Form.Group>
 
- <Link to="/challenges"><Button variant="success btn-lg mx-2" type="submit" >
+ <Button variant="success btn-lg mx-2" onClick={()=>{
+   let loginAllowed = false;
+   teamData.map((elem)=>{
+     if(elem.name === loginid && elem.loginPass === loginPass)
+     {
+       loginAllowed = true
+       localStorage.setItem('login',elem.loginId)
+       history.push('/challenges')
+     }
+   })
+   if(!loginAllowed)
+   showAlert(true)
+ }} >
     Login 
-  </Button></Link> 
+  </Button>
  <Link to="/createTeam"><Button variant="danger btn-lg " type="submit" >
     Create a new Team
   </Button></Link>

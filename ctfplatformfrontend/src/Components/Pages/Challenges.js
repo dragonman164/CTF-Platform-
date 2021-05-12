@@ -13,6 +13,7 @@ const Challenges = ()=>{
     const [data,setData] = useState(false)
     const [success,showSuccess] = useState(false);
     const [failure,showFailure] = useState(false);
+    let id = localStorage.getItem('login')
 
     function showAlert(check)
     {
@@ -41,14 +42,12 @@ const Challenges = ()=>{
                 console.log(e);
             }
         }
-        request()
-        
-    
-    
+        request()    
     },[])
 
     return (
         <>
+        
      {
          success? <Alert variant="success" onClose={()=>{showSuccess(false)}} dismissible>
    Congratulations !! Your Flag is Correct
@@ -62,10 +61,7 @@ const Challenges = ()=>{
      }
    
 
- 
-
-
-       <div className="container bg-dark text-light my-3 py-5">
+     {id !== null?<div className="container bg-dark text-light my-3 py-5">
            <h1 className="my-3">Start Solving your Challenges and win exciting prizes!!!</h1>
        
         <div className="row mx-3">
@@ -75,12 +71,11 @@ const Challenges = ()=>{
                return (<ChallengeCard name={elem.id} difficulty={elem.difficulty_level} category={elem.category} description={elem.description} flag={elem.flag} alert={showAlert}/>)
             }) 
         }
-        
         </div>
-
-       </div>
-
-
+       </div>:(<div className="container bg-dark text-light my-3 py-5">
+           <h1 className="my-3">Pls Login to Continue!!!!</h1>
+           </div>)}
+       
         </>
     )
 

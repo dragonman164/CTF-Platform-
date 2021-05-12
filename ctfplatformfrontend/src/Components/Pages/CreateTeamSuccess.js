@@ -1,13 +1,19 @@
-const CreateTeamSuccess = ()=>{
 
+
+let name="",pass=""
+const CreateTeamSuccess = (props)=>{
+
+    name = props.location.state.teamName
+    pass = props.location.state.pass
+    console.log(props.location.state.teamName)
     return (
         <>
         <div className="container bg-dark text-light my-5">
             <h1 className="my-5"> This Team Was Successfully Registered</h1>
             <h4>Pls Note down Team Details for Future reference:</h4>
             <ul className="h4 font-weight-light my-5">
-                <li>Team Name : ABC</li>
-                <li>Team Login ID : abcmetaCTF</li>
+                <li>Team Name : {name}</li>
+                <li>Team Password : {pass}</li>
             </ul>
             <h1>Thanks for being with us</h1>
         </div>
