@@ -1,10 +1,29 @@
 import {Card,Button,Modal,Form} from 'react-bootstrap';
 import {useState} from 'react'
+import axios from 'axios';
 
 let flag =""
 
 const ChallengeCard = (props) =>{
 
+  async function updateScore(){
+    let data = JSON.stringify({
+      loginId : localStorage.getItem('login'),
+      total_score : localStorage.getItem('total_score'),
+      questions_solved : localStorage.getItem('questions_solved'),
+
+
+    })
+    const Response = await axios.put('http://127.0.0.1:8000/teamapi/',data,{
+      headers:{
+        Authorization:  'Basic YWRtaW46YWRtaW4=' ,// if you use token
+        'Content-Type': 'application/json',
+        
+    
+    },
+    })
+
+  }
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -38,7 +57,23 @@ const ChallengeCard = (props) =>{
           <Button variant="success" onClick={()=> {
         
            if(flag === props.flag)
-           props.alert(true);
+           {
+             props.alert(true);
+            let score = localStorage.getItem('total_score');
+            let questions = localStorage.getItem('questions_solved');
+
+            if(score === null && questions === null)
+            {
+               localStorage.setItem('total_score',props.score);
+               localStorage.setItem('questions_solved',1);
+            }
+            else{
+              localStorage.setItem('total_score',parseInt(score) + props.score);
+              localStorage.setItem('questions_solved',parseInt(questions) + 1)
+
+            }
+            updateScore()
+           }
            else
            props.alert(false);
            handleClose();

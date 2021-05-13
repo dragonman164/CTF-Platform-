@@ -11,3 +11,8 @@ class TeamSerializer(serializers.ModelSerializer):
     class Meta:
         model = Team
         fields = '__all__'
+
+class TeamFlagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Team
+        fields = ['loginId','questions_solved','total_score']

@@ -62,13 +62,14 @@ const Challenges = ()=>{
    
 
      {id !== null?<div className="container bg-dark text-light my-3 py-5">
+            <h1 className="my-3">Team Score : {localStorage.getItem('total_score') === null?0:localStorage.getItem('total_score')}</h1>
            <h1 className="my-3">Start Solving your Challenges and win exciting prizes!!!</h1>
        
         <div className="row mx-3">
         
         {
             CTFdata.map((elem)=>{
-               return (<ChallengeCard name={elem.id} difficulty={elem.difficulty_level} category={elem.category} description={elem.description} flag={elem.flag} alert={showAlert}/>)
+               return (<ChallengeCard name={elem.name} difficulty={elem.difficulty_level} category={elem.category} description={elem.description} flag={elem.flag} score={elem.points} alert={showAlert}/>)
             }) 
         }
         </div>
